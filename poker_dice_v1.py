@@ -15,13 +15,14 @@ names = {nine: "9", ten: "10", jack: "J", queen: "Q", king: "K", ace: "A"}
 
 player_score = 0
 computer_score = 0
-player_hand = 0
+draws = 0
 
 # who are you?
 user_name = input("What is your name? ")
+computer_hand = 0
 
 
-def start(user_name):
+def start():
     print(f"Welcome {user_name}, let's play a game of Linux's Poker Dice")
     while game():
         pass
@@ -29,9 +30,24 @@ def start(user_name):
 
 
 def game():
+    global player_score, computer_score, draws
     print(f"{user_name}, the computer will help you throw the 5 dices")
-    throw(False)
-    play_again()
+    result = throw(False)
+    user_hand = result[1]
+
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+    print("The Computer is playing now!")
+    result = throw(True)
+    if user_hand > result[1]:
+        print(f"You won with a hand of {user_hand}")
+        player_score += 1
+    elif user_hand < result[1]:
+        print(f"You lost, your hand is {user_hand}, computer hand {result[1]}")
+        computer_score += 1
+    else:
+        print(f"It is a draw, a hand with a value of {user_hand}")
+        draws += 1
+    return play_again()
 
 
 def throw(is_computer):
@@ -45,7 +61,7 @@ def throw(is_computer):
     result = show_hand(dice)
     print(f"{user}, you currently have '{result[0]}' with a value {result[1]}")
 
-    roll_times = get_dices()
+    roll_times = get_dices(user)
 
     if roll_times == 0:
         print(f"You finish with {result}")
@@ -78,18 +94,15 @@ def throw(is_computer):
             replacement = dices_new_hand[iterations - 1]
             dice[dice_changes[iterations - 1]] = replacement
 
-        # dice.sort()
-        # for d in range(len(dice)):
-        #     print(f"Dice {d + 1} : {names[dice[d]]}")
-
         result = show_hand(dice)
-        print(f"You currently have '{result[0]}' with a value {result[1]}")
+        print(f"{user}, You currently have '{result[0]}' with a value {result[1]}")
+    return result
 
 
-def get_dices():
+def get_dices(user):
     while True:
         try:
-            dices = int(input("How many dices do you want to throw again? "))
+            dices = int(input(f"{user}, How many dices do you want to throw again? "))
             if dices in (0, 1, 2, 3, 4, 5):
                 print(f"Dices {dices}")
                 return dices
@@ -129,54 +142,51 @@ def show_hand(dice) -> object:
 
     if dice == straight1 or dice == straight2:
         hand_result.append("a straight!")
-        hand_result.append(5)
-        return hand_result
+        hand_result.append(5)  # hand value
+        hand_result.append(0)  # new cards
+        # return hand_result
     elif dice_hand[0] == 5:
         hand_result.append("five of a kind!")
-        hand_result.append(8)
-        return hand_result
+        hand_result.append(8)  # hand value
+        hand_result.append(0)  # new cards
+        # return hand_result
     elif dice_hand[0] == 4:
         hand_result.append("four of a kind!")
         hand_result.append(7)
-        return hand_result
+        hand_result.append(1)
+        # return hand_result
     elif (dice_hand[0] == 3 and dice_hand[1] == 2) or (dice_hand[0] == 2 and dice_hand[1] == 3):
         hand_result.append("a full house!")
         hand_result.append(6)
-        return hand_result
+        hand_result.append(0)
+        # return hand_result
     elif (dice_hand[0] == 3 and dice_hand[1] == 1) or (dice_hand[0] == 1 and dice_hand[1] == 3) or (
             dice_hand[0] == 1 and dice_hand[1] == 1 and dice_hand[2] == 3):
         hand_result.append("three of a kind!")
         hand_result.append(4)
-        return hand_result
+        hand_result.append(2)
+        # return hand_result
     elif (dice_hand[0] == 2 and dice_hand[1] == 2) or (dice_hand[0] == 1 and dice_hand[1] == 2):
         hand_result.append("two pairs!")
         hand_result.append(3)
-        return hand_result
+        hand_result.append(1)
+        # return hand_result
     elif (dice_hand[0] == 2 and dice_hand[1] == 1 and dice_hand[2] == 1) or (
             dice_hand[0] == 1 and dice_hand[1] == 2 and dice_hand[2] == 1) or (
             dice_hand[0] == 1 and dice_hand[1] == 1 and dice_hand[2] == 1 and dice_hand[3] == 2):
         hand_result.append("one pair!")
         hand_result.append(2)
-        return hand_result
-    #
-    #    elif dice_hand[0] == 3:
-    #        if dice_hand[1] == 2:
-    #            return "a full house!"
-    #        else:
-    #            return "three of a kind!"
-    #    elif dice_hand[0] == 2:
-    #        if dice_hand[1] == 2:
-    #            return "two pair"
-    #        else:
-    #            return "one pair"
+        hand_result.append(3)
+        # return hand_result
     else:
         hand_result.append("a high card")
         hand_result.append(1)
-        return hand_result
+        hand_result.append(4)
+    return hand_result
 
 
 def play_again():
-    answer = input("Would you like to play again? y/n ").lower()
+    answer = input(f"{user_name}, Would you like to play again? y/n ").lower()
     if answer in ("y", "yes"):
         return answer
     else:
@@ -184,12 +194,13 @@ def play_again():
 
 
 def scores():
-    global player_score, computer_score
+    global player_score, computer_score, draws
     print("HIGH SCORES")
     print(f"Player  : {player_score}")
     print(f"Computer: {computer_score}")
+    print(f"Draws   : {draws}")
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    start(user_name)
+    start()

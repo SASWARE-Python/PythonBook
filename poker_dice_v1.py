@@ -17,6 +17,8 @@ player_score = 0
 computer_score = 0
 draws = 0
 
+verbose = False
+
 # who are you?
 user_name = input("What is your name? ")
 computer_hand = 0
@@ -69,9 +71,11 @@ def throw(is_computer):
         #    roll_times = dice_quantity
         dices_new_hand = roll(roll_times)
         dice_changes = list(range(roll_times))
-        print(f"Rolled {roll_times} dices")
-        print(f"New dices {dice_changes}")
-        print(f"Dices new {dices_new_hand}")
+        if verbose:
+            print(f"Rolled {roll_times} dices")
+            print(f"New dices {dice_changes}")
+            print(f"Dices new {dices_new_hand}")
+
         print("Enter the number of a dice to re_roll? ")
         iterations = 0
         while iterations < roll_times:

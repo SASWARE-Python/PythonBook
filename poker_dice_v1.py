@@ -1,7 +1,24 @@
 # Linux: poker_dice game
 
 import random
+import time
 from itertools import groupby
+
+
+class BgColors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    Reset = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+    Green = '\u001b[38;5;28m'
+    Yellow = '\u001b[38;5;3m'
+    Blue = '\u001b[38;5;4m'
+    DarkBlue = '\u001b[38;5;21m'
+
 
 # initialize rules
 nine = 1
@@ -25,7 +42,7 @@ computer_hand = 0
 
 
 def start():
-    print(f"Welcome {user_name}, let's play a game of Linux's Poker Dice")
+    print(f"{BgColors.Blue}Welcome {user_name}, let's play a game of Linux's Poker Dice{BgColors.Reset}")
     while game():
         pass
     scores()
@@ -37,8 +54,10 @@ def game():
     result = throw(False)
     user_hand = result[1]
 
-    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-    print("The Computer is playing now!")
+    print(f"{BgColors.Blue}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{BgColors.Reset}")
+    print(f"{BgColors.Blue}The Computer is playing now!{BgColors.Reset}")
+    time.sleep(2)
+
     result = throw(True)
     if user_hand > result[1]:
         print(f"You won with a hand of {user_hand}")
@@ -54,8 +73,9 @@ def game():
 
 def throw(is_computer):
     user = user_name
+    dice_to_roll_idx = 0
     if is_computer:
-        user = "Computer"
+        user = f"{BgColors.Blue}Computer{BgColors.Reset}"
 
     roll_times = 5
     dice = roll(roll_times)
@@ -63,10 +83,13 @@ def throw(is_computer):
     result = show_hand(dice)
     print(f"{user}, you currently have '{result[0]}' with a value {result[1]}")
 
-    roll_times = get_dices(user)
-
+    if is_computer:
+        print(f"{user} {BgColors.Yellow} is rolling {result[2]} dices {BgColors.Reset}")
+        roll_times = result[2]
+    else:
+        roll_times = get_dices(user)
     if roll_times == 0:
-        print(f"You finish with {result}")
+        print(f"{user} You finish with {result[0]}")
     else:
         #    roll_times = dice_quantity
         dices_new_hand = roll(roll_times)
@@ -81,7 +104,17 @@ def throw(is_computer):
         while iterations < roll_times:
             iterations += 1
             while True:
-                selection = int(input("? "))
+                if is_computer:
+                    while True:
+                        if dice.count(dice[dice_to_roll_idx]) == 1:
+                            dice_to_roll_idx += 1
+                            selection = dice_to_roll_idx
+                            break
+                        else:
+                            dice_to_roll_idx += 1
+                    print(f"Next dice? {BgColors.Green}{selection}{BgColors.Reset}")
+                else:
+                    selection = int(input("Next dice? "))
                 try:
                     if selection in (1, 2, 3, 4, 5):
                         break

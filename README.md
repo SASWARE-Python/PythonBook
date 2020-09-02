@@ -26,7 +26,7 @@ Please make sure to update tests as appropriate.
 
 ## Python Applications
 
-<table style="border: 1px solid black;">
+<table style="border: 1px solid black; witdh:100%;">
     <col style="width:30%;">
     <col style="width:70%;">
     <tr>

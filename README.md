@@ -6,10 +6,11 @@ This repository is part of my self training in Python version 3, because of that
 
 ## Conventions
 
-The original source code files are identified with a **_v1.py** tag, new versions with improvements are
+The original source code files are identified with a **_v1.py** tag, new versions with improvements are tagged with **_v#.py**
+
 ## Installation
 
-You should download the GitHub's master zip to a local folder in your machine.
+You should unzip the GitHub's code master zip to a local folder in your machine, to review these applications.
 
 ## Usage
 
@@ -25,6 +26,11 @@ Please make sure to update tests as appropriate.
 
 ## Python Applications
 
-
+<table style="border: 1px solid black;">
+    <tr>
+        <th>File</th>
+        <th>Description</th>
+    </tr>
+</table>
 
 

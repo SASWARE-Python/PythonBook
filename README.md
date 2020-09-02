@@ -27,9 +27,15 @@ Please make sure to update tests as appropriate.
 ## Python Applications
 
 <table style="border: 1px solid black;">
+    <col style="width:30%;">
+    <col style="width:70%;">
     <tr>
         <th>File</th>
         <th>Description</th>
+    </tr>
+    <tr>
+        <td>rps_v1</td>
+        <td>This is a very simple game of: Rock, Paper Sissors</td>
     </tr>
 </table>
 

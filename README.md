@@ -35,7 +35,9 @@ Please make sure to update tests as appropriate.
     </tr>
     <tr>
         <td>rps_v1</td>
-        <td>This is a very simple game of: Rock, Paper Sissors</td>
+        <td>This is a very simple game of: Rock, Paper Sissors</br>
+The code is almost 100% the original code in the book, we removed the first line comment referencing the python2 interpreter<br>
+</td>
     </tr>
 </table>
 

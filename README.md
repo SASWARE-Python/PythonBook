@@ -36,13 +36,23 @@ Please make sure to update tests as appropriate.
     <tr>
         <td>rps_v1</td>
         <td>This is a very simple game of: Rock, Paper Sissors.</br>
-The code is almost 100% the original code in the book, we removed the first line comment referencing the python2 interpreter.<br>
+The code is almost 100% the original version from the book, we removed the first line comment referencing the python2 interpreter.<br>
 Print statements include open-close parentheses.
     </td>
     </tr>
     <tr>
     <td>hangnab_v1.py</td>
-    <td>This is the code for the game of Hangman,
+    <td>This is the code for the game of: Hangman.<br>
+The code is almost 100% the original version from the book, we removed the first line comment referencing the python2 intepreter.<br>
+Print statements include open-close parentheses.
+    </tr>
+    <tr>
+    <td>poker_dice_v1.py</td>
+    <td></td>
+    </tr>
+    <tr>
+    <td>poker_dice_v2.py</td>
+    <td></td>
     </tr>
 </table>
 

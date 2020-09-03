@@ -4,7 +4,8 @@
 # ~~~~~~~~~~~~~~~~~~
 # + Single user version.
 # + It does not implement the computer user
-#
+# + I had to convert to integer some input variables.
+# + In a couple of places the range() output was converted to a list()
 
 import random
 from itertools import groupby
@@ -21,11 +22,6 @@ names = {nine: "9", ten: "10", jack: "J", queen: "Q", king: "K", ace: "A"}
 
 player_score = 0
 computer_score = 0
-
-# who are you?
-user_name = input("What is your name? ")
-computer_hand = 0
-
 
 def start():
     print("Let's play a game of Linux's Poker Dice")
@@ -54,7 +50,7 @@ def throw():
     while True:
         rerolls = input("How many dice do you want to throw again? ")
         try:
-            if rerolls in (1,2,3,4,5):
+            if rerolls in ["1","2","3","4","5"]:
                 break
         except ValueError:
             print("Oops! I didn't understand that. Please enter: 1, 2, 3, 4 or 5")
@@ -63,15 +59,15 @@ def throw():
         print("You finish with ", result)
     else:
         roll_number = rerolls
-        dice_rerolls = roll(roll_number)
-        dice_changes = range(rerolls)
+        dice_rerolls = roll(int(roll_number))
+        dice_changes = list(range(int(rerolls)))
         print("Enter the number of a dice to reroll: ")
         iterations = 0
-        while iterations < rerolls:
+        while iterations < int(rerolls):
             iterations = iterations + 1
             while True:
-                selection = input("? ")
-                try
+                selection = int(input("? "))
+                try:
                     if selection in (1,2,3,4,5):
                         break
                 except ValueError:
@@ -81,7 +77,7 @@ def throw():
             print("You have changed dice ", selection)
 
         iterations = 0
-        while iterations < rerolls:
+        while iterations < int(rerolls):
             iterations = iterations + 1
             replacement = dice_rerolls[iterations - 1]
             dice[dice_changes[iterations - 1]] = replacement
@@ -104,7 +100,7 @@ def roll(roll_number):
     return dice
 
 
-def hand(dice)
+def hand(dice):
     dice_hand = [len(list(group)) for key, group in groupby(dice)]
     dice_hand.sort(reverse=True)
     straight1 = [1, 2, 3, 4, 5]
@@ -131,7 +127,7 @@ def hand(dice)
 
 
 def play_again():
-    answer = input(f"{user_name}, Would you like to play again? y/n ").lower()
+    answer = input(" Would you like to play again? y/n ").lower()
     if answer in ("y", "yes"):
         return answer
     else:

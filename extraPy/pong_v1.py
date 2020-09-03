@@ -7,6 +7,7 @@
 # - turtle <- tkinter
 
 import turtle
+import os
 
 root = turtle.Screen()
 root.title("Pong by Arnaldo Sandoval")
@@ -88,6 +89,7 @@ root.onkeypress(paddle_b_up, "Up")
 root.onkeypress(paddle_b_down, "Down")
 
 # Main game loop
+bounce_sound = True
 while True:
     root.update()
 
@@ -96,9 +98,18 @@ while True:
     ball.sety(ball.ycor() + ball.dy)
 
     # Border checking
+    if ((286 < ball.ycor() < 287) or (-286 > ball.ycor() > -287)) and bounce_sound:
+        os.system('aplay bounce_side_wall_01.wav&')
+        bounce_sound = False
+
+    if (ball.xcor() > 386 or ball.xcor() < -386) and bounce_sound:
+        os.system('aplay bounce-02.wav&')
+        bounce_sound = False
+
     if ball.ycor() > 290:
         ball.sety(290)
         ball.dy *= -1
+        bounce_sound = True
 
     if ball.xcor() > 390:
         ball.goto(0, 0)
@@ -106,10 +117,12 @@ while True:
         score_a += 1
         pen.clear()
         pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 18, "normal"))
+        bounce_sound = True
 
     if ball.ycor() < -290:
         ball.sety(-290)
         ball.dy *= -1
+        bounce_sound = True
 
     if ball.xcor() < -390:
         ball.goto(0, 0)
@@ -117,6 +130,7 @@ while True:
         score_b += 1
         pen.clear()
         pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 18, "normal"))
+        bounce_sound = True
 
     # Paddle and ball collisions
     if (340 < ball.xcor() < 350) and (paddle_b.ycor() + 50 > ball.ycor() > paddle_b.ycor() - 50):

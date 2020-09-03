@@ -24,7 +24,7 @@ Please make sure to update tests as appropriate.
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
-## Python Applications
+## PythonBook Applications
 
 <table style="border: 1px solid black; witdh:100%;">
     <col style="width:30%; vertical-align: text-top;S">
@@ -55,6 +55,22 @@ Print statements include open-close parentheses.
     <td>This is an enhanced version of the game:<ul><li>Two users support.<li>Colours<li>Personalized, it accepts the user_name<li>The computer plays automatically<li>It keeps track of wins, loss and draws!</ul>
     </td>
     </tr>
+</table>
+
+## None-PythonBook Applications
+
+<table style="border: 1px solid black; witdh:100%;">
+  <col style="width:30%; vertical-align: text-top;S">
+  <col style="width:70%;">
+  <tr>
+    <th>File</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>pong_v1.py</td>
+    <td><ul><li>Basic game<li>Introduction to Turtle</ul>
+    </td>
+  </tr>
 </table>
 
 

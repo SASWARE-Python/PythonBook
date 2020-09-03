@@ -48,7 +48,8 @@ Print statements include open-close parentheses.
     </tr>
     <tr>
     <td>poker_dice_v1.py</td>
-    <td></td>
+    <td>This is the original version of the game as it appeared in the magazine-book; it was converted to Python 3; nothing else<br>
+</td>
     </tr>
     <tr>
     <td>poker_dice_v2.py</td>

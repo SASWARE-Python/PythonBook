@@ -1,6 +1,6 @@
 # <img src="images/python-logo1.png"> PythonBook
 
-The PythonBook is a Python repository containing the code examples found in its tutorials. These examples were published using Python version 2, they had been converted to Python version 3.
+The PythonBook is a Python repository containing the code examples found in the Book's tutorials. These examples were published using Python version 2, they had been converted to Python version 3.
 
 This repository is part of my self training in Python version 3, because of that you could also find **.py** files no appearing in the **PythonBook**, the Python Applications section in this readme file identify them.
 
@@ -53,7 +53,8 @@ Print statements include open-close parentheses.
     </tr>
     <tr>
     <td>poker_dice_v2.py</td>
-    <td></td>
+    <td>This is an enhanced version of the game:<br>Two users support.<br>Colours<br>Personalized, it accepts the user_name<br>The computer plays automatically<br>It keeps track of wins, loss and draws!
+    </td>
     </tr>
 </table>
 

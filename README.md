@@ -41,9 +41,9 @@ Print statements include open-close parentheses.
     </td>
     </tr>
     <tr>
-    <td>hangnab_v1.py</td>
-    <td>This is the code for the game of: Hangman.<br>
-The code is almost 100% the original version from the book, we removed the first line comment referencing the python2 intepreter.<br>
+    <td>hangman_v1.py</td>
+    <td>This is the code for the game of: Hangman.<ul>
+<li>The code is almost 100% the original version from the book<li>We removed the first line comment referencing the python2 intepreter.</ul><br>
 Print statements include open-close parentheses.
     </tr>
     <tr>

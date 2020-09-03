@@ -53,7 +53,7 @@ Print statements include open-close parentheses.
     </tr>
     <tr>
     <td>poker_dice_v2.py</td>
-    <td>This is an enhanced version of the game:<br>Two users support.<br>Colours<br>Personalized, it accepts the user_name<br>The computer plays automatically<br>It keeps track of wins, loss and draws!
+    <td>This is an enhanced version of the game:<ul><li>Two users support.<li>Colours<li>Personalized, it accepts the user_name<li>The computer plays automatically<li>It keeps track of wins, loss and draws!</ul>
     </td>
     </tr>
 </table>

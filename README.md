@@ -43,8 +43,7 @@ Print statements include open-close parentheses.
     <tr>
     <td>hangman_v1.py</td>
     <td>This is the code for the game of: Hangman.<ul>
-<li>The code is almost 100% the original version from the book<li>We removed the first line comment referencing the python2 intepreter.</ul><br>
-Print statements include open-close parentheses.
+<li>The code is almost 100% the original version from the book<li>We removed the first line comment referencing the python2 intepreter.<li>Print statements include open-close parentheses.</ul></td>
     </tr>
     <tr>
     <td>poker_dice_v1.py</td>

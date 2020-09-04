@@ -18,6 +18,7 @@ root.tracer(0)
 # Score
 score_a = 0
 score_b = 0
+do_exit = False
 
 # Paddle A
 paddle_a = turtle.Turtle()
@@ -81,15 +82,25 @@ def paddle_b_down():
     paddle_b.sety(y)
 
 
+def exit_loop():
+    global do_exit
+    do_exit = True
+
+
 # Keyboard binding
 root.listen()
 root.onkeypress(paddle_a_up, "w")
 root.onkeypress(paddle_a_down, "s")
 root.onkeypress(paddle_b_up, "Up")
 root.onkeypress(paddle_b_down, "Down")
+root.onkeypress(exit_loop, "x")
 
 # Main game loop
 bounce_sound = True
+bounce_side = True
+bounce_wall = True
+bounce_paddle = True
+
 while True:
     root.update()
 
@@ -97,19 +108,27 @@ while True:
     ball.setx(ball.xcor() + ball.dx)
     ball.sety(ball.ycor() + ball.dy)
 
+    # Bouncing sound
+    if ((286 - ball.dy < ball.ycor() <= 286 + ball.dy) or (-279 - ball.dy >= ball.ycor() > -279 + ball.dy)) and bounce_side:
+        os.system('aplay bounce_side_wall_01.wav 2>/dev/null &')
+        bounce_side = False
+
+    if (370 - ball.dx < ball.xcor() <= 370 + ball.dx) or (-386 + ball.dx < ball.xcor() <= -386 - ball.dx) and bounce_wall:
+        os.system('aplay bounce-02.wav 2>/dev/null &')
+        bounce_wall = False
+
+    if bounce_paddle and (340 < ball.xcor() < 350) and (paddle_b.ycor() + 50 > ball.ycor() > paddle_b.ycor() - 50):
+        os.system('aplay bounce_paddle_01.wav 2>/dev/null &')
+        bounce_paddle = False
+
+    if bounce_paddle and (-350 < ball.xcor() < -340) and (paddle_a.ycor() + 50 > ball.ycor() > paddle_a.ycor() - 50):
+        os.system('aplay bounce_paddle_01.wav 2>/dev/null &')
+        bounce_paddle = False
+
     # Border checking
-    if ((286 < ball.ycor() < 287) or (-286 > ball.ycor() > -287)) and bounce_sound:
-        os.system('aplay bounce_side_wall_01.wav&')
-        bounce_sound = False
-
-    if (ball.xcor() > 386 or ball.xcor() < -386) and bounce_sound:
-        os.system('aplay bounce-02.wav&')
-        bounce_sound = False
-
     if ball.ycor() > 290:
         ball.sety(290)
         ball.dy *= -1
-        bounce_sound = True
 
     if ball.xcor() > 390:
         ball.goto(0, 0)
@@ -117,24 +136,34 @@ while True:
         score_a += 1
         pen.clear()
         pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 18, "normal"))
-        bounce_sound = True
+        bounce_side = True
+        bounce_wall = True
 
     if ball.ycor() < -290:
         ball.sety(-290)
         ball.dy *= -1
-        bounce_sound = True
 
-    if ball.xcor() < -390:
+    if ball.xcor() < -394:
         ball.goto(0, 0)
         ball.dx *= -1
         score_b += 1
         pen.clear()
         pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 18, "normal"))
-        bounce_sound = True
+        bounce_side = True
+        bounce_wall = True
 
     # Paddle and ball collisions
     if (340 < ball.xcor() < 350) and (paddle_b.ycor() + 50 > ball.ycor() > paddle_b.ycor() - 50):
         ball.dx *= -1
+        bounce_side = True
+        bounce_wall = True
+        bounce_paddle = True
 
     if (-350 < ball.xcor() < -340) and (paddle_a.ycor() + 50 > ball.ycor() > paddle_a.ycor() - 50):
         ball.dx *= -1
+        bounce_side = True
+        bounce_wall = True
+        bounce_paddle = True
+
+    if do_exit:
+        break

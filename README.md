@@ -68,7 +68,7 @@ Print statements include open-close parentheses.
   </tr>
   <tr>
     <td>pong_v1.py</td>
-    <td><ul><li>Basic game<li>Introduction to Turtle</ul>
+    <td><ul><li>Basic game<li>Introduction to Turtle<li>With basic sound and no configuration</ul>
     </td>
   </tr>
 </table>

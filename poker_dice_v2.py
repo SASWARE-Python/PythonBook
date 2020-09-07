@@ -1,4 +1,4 @@
-# Linux: poker_dice game version 2
+# Python: poker_dice game version 2
 
 import random
 import time

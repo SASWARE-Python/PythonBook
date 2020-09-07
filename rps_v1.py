@@ -1,4 +1,4 @@
-# Linux: Rock, Paper Scissors Game
+# Python: Rock, Paper Scissors Game
 
 import random
 import time

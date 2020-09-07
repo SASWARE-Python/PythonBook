@@ -41,6 +41,14 @@ Print statements include open-close parentheses.
     </td>
     </tr>
     <tr>
+        <td>rps_gui_v2.py</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>rps_gui_v3.py</td>
+        <td></td>
+    </tr>
+    <tr>
     <td>hangman_v1.py</td>
     <td>This is the code for the game of: Hangman.<ul>
 <li>The code is almost 100% the original version from the book<li>We removed the first line comment referencing the python2 intepreter.<li>Print statements include open-close parentheses.</ul></td>
@@ -55,7 +63,11 @@ Print statements include open-close parentheses.
     <td>This is an enhanced version of the game:<ul><li>Two users support.<li>Colours<li>Personalized, it accepts the user_name<li>The computer plays automatically<li>It keeps track of wins, loss and draws!</ul>
     </td>
     </tr>
-</table>
+    <tr>
+        <td>gamesGUI_v1.py</td>
+        <td></td>
+    </tr>
+</table><br>
 
 ## None-PythonBook Applications
 

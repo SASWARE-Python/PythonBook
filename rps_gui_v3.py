@@ -1,6 +1,6 @@
 # Python: Rock, Paper Scissors Game
 # GUI version
-# Program name: rps_gui_v2.py
+# Program name: rps_gui_v3.py
 
 # History
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

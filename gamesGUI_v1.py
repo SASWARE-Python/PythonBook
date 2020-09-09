@@ -3,6 +3,7 @@
 from tkinter import *  # spelled in lowercase
 
 import rps_gui_v3
+import hangman_gui_v3
 
 # import hangman_v1
 # import poker_dice_v2
@@ -19,6 +20,9 @@ intro.pack(side=TOP)
 
 rps_button = Button(mainFrame, text="Rock, Paper, Scissors", command=rps_gui_v3.gui)
 rps_button.pack()
+
+hm_button = Button(mainFrame, text="Hangman", command=hangman_gui_v3.gui)
+hm_button.pack()
 
 exit_button = Button(mainFrame, text="Quit", command=root.destroy)
 exit_button.pack()
